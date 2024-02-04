@@ -37,7 +37,7 @@ export default function Home() {
     { nome: "Reparo em Buraco na Rua B", secretaria: "Obras", bairro: "Bairro Engenho", data: "04/02/2024" },
     { nome: "Vazamento de Água na Rua C", secretaria: "Obras", bairro: "Bairro Engenho", data: "04/02/2024" },
     { nome: "Podas de Árvores na Praça D", secretaria: "Meio Ambiente", bairro: "Bairro Engenho", data: "04/02/2024" },
-    { nome: "Sinalização Viária na Avenida E", secretaria: "Trânsito", bairro: "Bairro Engenho", data: "004/02/2024" },
+    { nome: "Sinalização Viária na Avenida E", secretaria: "Trânsito", bairro: "Bairro Engenho", data: "04/02/2024" },
     { nome: "Conserto de Calçada na Rua F", secretaria: "Urbanismo", bairro: "Bairro Engenho", data: "04/02/2024" },
   ];
 
