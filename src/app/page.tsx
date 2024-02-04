@@ -4,10 +4,25 @@ import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import Modal from "@/components/modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 export default function Home() {
   const [openModalIndex, setOpenModalIndex] = useState(null);
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
+  useEffect(() => {
+    document.title = 'Chamados Prefeitura';
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // Remova a atualização automática do cliente
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
 
   const handleOpenModal = (index:any) => {
     setOpenModalIndex(index);
@@ -18,42 +33,52 @@ export default function Home() {
   }
 
   const chamados = [
-    { nome: "Chamado 1", secretaria: "Secretaria 1", bairro: "Bairro 1", data: "01/01/2022" },
-    { nome: "Chamado 2", secretaria: "Secretaria 2", bairro: "Bairro 2", data: "02/01/2022" },
-    { nome: "Chamado 2", secretaria: "Secretaria 2", bairro: "Bairro 2", data: "02/01/2022" },
-    { nome: "Chamado 2", secretaria: "Secretaria 2", bairro: "Bairro 2", data: "02/01/2022" },
-    { nome: "Chamado 2", secretaria: "Secretaria 2", bairro: "Bairro 2", data: "02/01/2022" },
-    { nome: "Chamado 2", secretaria: "Secretaria 2", bairro: "Bairro 2", data: "02/01/2022" },
-    // Adicione mais chamados conforme necessário
+    { nome: "Troca de Lâmpada na Rua A", secretaria: "Iluminação Pública", bairro: "Bairro Engenho", data: "01/02/2022" },
+    { nome: "Reparo em Buraco na Rua B", secretaria: "Obras", bairro: "Bairro Engenho", data: "02/02/2022" },
+    { nome: "Vazamento de Água na Rua C", secretaria: "Obras", bairro: "Bairro Engenho", data: "03/02/2022" },
+    { nome: "Podas de Árvores na Praça D", secretaria: "Meio Ambiente", bairro: "Bairro Engenho", data: "04/02/2022" },
+    { nome: "Sinalização Viária na Avenida E", secretaria: "Trânsito", bairro: "Bairro Engenho", data: "05/02/2022" },
+    { nome: "Conserto de Calçada na Rua F", secretaria: "Urbanismo", bairro: "Bairro Engenho", data: "06/02/2022" },
   ];
 
   return (
     <div className="min-h-screen bg-slate-200 flex flex-col">
-      <header className="bg-slate-800">
+      <header className="bg-[#003768]">
         <div className="flex items-center justify-between container m-auto h-20">
           <Image
-            src="/vercel.svg"
+            src="/logo-prefeitura-itaguai.png"
             alt="Vercel Logo"
-            className="dark:invert"
-            width={100}
+            width={140}
             height={24}
             priority
           />
-          <p>Sair</p>
+          <p className="cursor-pointer">Sair</p>
         </div>
       </header>
       <main className="container m-auto flex-1 my-4">
         <h1 className="text-3xl text-gray-600 h-20 mt-5">Chamados</h1>
         <ul>
           {chamados.map((chamado, index) => (
-            <li key={index} className="bg-slate-100 min-h-10 rounded flex items-center justify-between p-3 my-1 cursor-pointer transition-all ease-in-out duration-200 hover:bg-slate-50 hover:shadow-sm">
-              <p className="text-gray-700">{chamado.nome}</p>
-              <p className="text-gray-700">{chamado.secretaria}</p>
-              <p className="text-gray-700">{chamado.bairro}</p>
-              <p className="text-gray-700">{chamado.data}</p>
-              <p className="text-gray-700">Status:</p>
-              <div className="p-3 cursor-pointer relative flex items-center" onMouseEnter={() => handleOpenModal(index)} onMouseLeave={handleCloseModal}>
-                <FontAwesomeIcon icon={faEllipsisV} className="h-6 text-gray-400"/>
+            <li key={index} className="bg-slate-100 min-h-4 rounded grid justify-between grid-cols-7 p-2 my-1 cursor-pointer transition-all ease-in-out duration-200 hover:bg-slate-50 hover:shadow-sm">
+              <div className="col-span-2 w-full flex items-center">
+                <p className="text-gray-700">{chamado.nome}</p>
+              </div>
+              <div className="col-span-1 w-full flex items-center">
+                <p className="text-gray-700">{chamado.secretaria}</p>
+              </div>
+              <div className="col-span-1 flex items-center">
+                <p className="text-gray-700 flex items-center">{chamado.bairro}</p>
+              </div>
+              <div className="flex justify-end w-4/6 items-center">
+                <p className="text-gray-700">{chamado.data}</p>
+              </div>
+              <div className="flex justify-end w-4/6 items-center">
+                <p className="text-gray-700">Status:</p>
+              </div>
+              <div className="cursor-pointer relative flex items-center justify-end col-span-1">
+                <div className="p-4 w-2" onMouseEnter={() => handleOpenModal(index)} onMouseLeave={handleCloseModal}>
+                  <FontAwesomeIcon icon={faEllipsisV} className="h-6 text-gray-400"/>
+                </div>
                 <Modal isOpen={openModalIndex === index} />
               </div>
             </li>
