@@ -33,12 +33,12 @@ export default function Home() {
   }
 
   const chamados = [
-    { nome: "Troca de Lâmpada na Rua A", secretaria: "Iluminação Pública", bairro: "Bairro Engenho", data: "01/02/2022" },
-    { nome: "Reparo em Buraco na Rua B", secretaria: "Obras", bairro: "Bairro Engenho", data: "02/02/2022" },
-    { nome: "Vazamento de Água na Rua C", secretaria: "Obras", bairro: "Bairro Engenho", data: "03/02/2022" },
-    { nome: "Podas de Árvores na Praça D", secretaria: "Meio Ambiente", bairro: "Bairro Engenho", data: "04/02/2022" },
-    { nome: "Sinalização Viária na Avenida E", secretaria: "Trânsito", bairro: "Bairro Engenho", data: "05/02/2022" },
-    { nome: "Conserto de Calçada na Rua F", secretaria: "Urbanismo", bairro: "Bairro Engenho", data: "06/02/2022" },
+    { nome: "Troca de Lâmpada na Rua A", secretaria: "Iluminação Pública", bairro: "Bairro Engenho", data: "04/02/2024" },
+    { nome: "Reparo em Buraco na Rua B", secretaria: "Obras", bairro: "Bairro Engenho", data: "04/02/2024" },
+    { nome: "Vazamento de Água na Rua C", secretaria: "Obras", bairro: "Bairro Engenho", data: "04/02/2024" },
+    { nome: "Podas de Árvores na Praça D", secretaria: "Meio Ambiente", bairro: "Bairro Engenho", data: "04/02/2024" },
+    { nome: "Sinalização Viária na Avenida E", secretaria: "Trânsito", bairro: "Bairro Engenho", data: "004/02/2024" },
+    { nome: "Conserto de Calçada na Rua F", secretaria: "Urbanismo", bairro: "Bairro Engenho", data: "04/02/2024" },
   ];
 
   return (
