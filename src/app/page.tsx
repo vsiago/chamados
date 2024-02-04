@@ -78,8 +78,8 @@ export default function Home() {
               <div className="cursor-pointer relative flex items-center justify-end col-span-1">
                 <div className="p-4 w-2" onMouseEnter={() => handleOpenModal(index)} onMouseLeave={handleCloseModal}>
                   <FontAwesomeIcon icon={faEllipsisV} className="h-6 text-gray-400"/>
-                </div>
                 <Modal isOpen={openModalIndex === index} />
+                </div>
               </div>
             </li>
           ))}
