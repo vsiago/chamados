@@ -15,15 +15,6 @@ export default function Home() {
     alert('Modal status ✅\nLogica status ✅ \nUI modal chamado --\nResponsivo mobile --\nTela Login --')
   }, []);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      // Remova a atualização automática do cliente
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-
   const handleOpenModal = (index: any) => {
     setOpenModalIndex(index);
   }
@@ -47,7 +38,8 @@ export default function Home() {
     Recebido: 'text-gray-600',
     'Em análise': 'text-yellow-600',
     'Em andamento': 'text-sky-600',
-    Concluído: 'text-green-600',
+    'Concluído': 'text-green-600',
+    'Rejeitado': 'text-red-600'
     // Adicione outras cores conforme necessário
   };
 
