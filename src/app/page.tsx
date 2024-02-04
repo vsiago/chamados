@@ -9,7 +9,12 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [openModalIndex, setOpenModalIndex] = useState(null);
-  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  const [status, setStatus] = useState("") // Novo estado para rastrear o status dos chamados
+
+  // Funcao para definir o status do componente pai
+  const handleSetStatus = (newStatus:any) => {
+    setStatus(newStatus);
+  }
 
   useEffect(() => {
     document.title = 'Chamados Prefeitura';
@@ -73,12 +78,12 @@ export default function Home() {
                 <p className="text-gray-700">{chamado.data}</p>
               </div>
               <div className="flex justify-end w-4/6 items-center">
-                <p className="text-gray-700">Status:</p>
+                <p className="text-gray-700">Status: {status}</p>
               </div>
               <div className="cursor-pointer relative flex items-center justify-end col-span-1">
                 <div className="p-4 w-2" onMouseEnter={() => handleOpenModal(index)} onMouseLeave={handleCloseModal}>
                   <FontAwesomeIcon icon={faEllipsisV} className="h-6 text-gray-400"/>
-                <Modal isOpen={openModalIndex === index} />
+                <Modal isOpen={openModalIndex === index} onSetStatus={(newStatus) => handleSetStatus(newStatus)} />
                 </div>
               </div>
             </li>
