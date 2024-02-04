@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function Home() {
   const [openModalIndex, setOpenModalIndex] = useState(null);
 
-  const handleOpenModal = (index) => {
+  const handleOpenModal = (index:any) => {
     setOpenModalIndex(index);
   }
 
