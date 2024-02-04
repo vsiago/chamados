@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     document.title = 'Chamados Prefeitura';
-    alert('Modal status ✅\nTroca de status ✅ \nModal de exibicao do chamado --')
+    alert('Modal status ✅\nLogica status ✅ \nUI modal chamado --\nResponsivo mobile --\nTela Login --')
   }, []);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export default function Home() {
           {chamados.map((chamado, index) => (
             <li key={index} className="bg-slate-100 min-h-4 rounded grid justify-between grid-cols-7 p-2 my-1 cursor-pointer transition-all ease-in-out duration-200 hover:bg-slate-50 hover:shadow-sm">
               <div className="flex col-span-2 justify-center w-full items-start flex-col">
-                <p className="text-gray-500 uppercase text-xs">ASSUNTO</p>
+                <p className="text-gray-500 uppercase text-xs tracking-wider">ASSUNTO do chamado</p>
                 <p className="text-gray-700">{chamado.nome}</p>
               </div>
               <div className="flex justify-center w-full items-start flex-col">
