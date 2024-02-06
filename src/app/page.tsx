@@ -87,17 +87,26 @@ export default function Home() {
                 <Image
                   src="./icons/check.svg"
                   alt="Vercel Logo"
-                  width={60}
-                  height={60}
+                  width={43}
+                  height={43}
                   priority
                 />
                 <p className="text-slate-600 text-2xl leading-6">38</p>
               </div>
-              <p className="text-slate-600 text-sm font-medium">Concluídos</p>
+              <p className="text-slate-600 text-sm font-medium mt-[-7px]">Concluídos</p>
             </div>
-            <div className="hover:bg-sky-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
-              <p className="text-slate-600 text-2xl leading-6">84</p>
-              <p className="text-sky-600 font-medium">Em andamentos</p>
+            <div className="text-center hover:bg-sky-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+              <div className="flex items-center">
+                <Image
+                  src="./icons/progress.svg"
+                  alt="Vercel Logo"
+                  width={43}
+                  height={43}
+                  priority
+                />
+                <p className="text-slate-600 text-2xl leading-6">38</p>
+              </div>
+              <p className="text-slate-600 text-sm font-medium mt-[-7px]">Em andamentos</p>
             </div>
             <div className="hover:bg-yellow-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
               <p className="text-slate-600 text-2xl leading-6">88</p>
