@@ -1,4 +1,3 @@
-// Home.jsx
 "use client"
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,13 +5,44 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import Modal from "@/components/modal";
 import { useState, useEffect } from "react";
 
-
 export default function Home() {
   const [openModalIndex, setOpenModalIndex] = useState(null);
+  const [chamados, setChamados] = useState([
+    { nome: "Troca de Lâmpada na Rua A", secretaria: "Iluminação Pública", bairro: "Engenho", data: "04/02/2024", status: '' },
+    { nome: "Reparo em Buraco na Rua B", secretaria: "Obras", bairro: "Engenho", data: "04/02/2024", status: '' },
+    { nome: "Vazamento de Água na Rua C", secretaria: "Obras", bairro: "Engenho", data: "04/02/2024", status: '' },
+    { nome: "Podas de Árvores na Praça D", secretaria: "Meio Ambiente", bairro: "Engenho", data: "04/02/2024", status: '' },
+    { nome: "Sinalização Viária na Avenida E", secretaria: "Trânsito", bairro: "Engenho", data: "04/02/2024", status: '' },
+    { nome: "Conserto de Calçada na Rua F", secretaria: "Urbanismo", bairro: "Engenho", data: "04/02/2024", status: '' },
+  ]);
+
+  const [statuses, setStatuses] = useState(Array(chamados.length).fill("Recebido"));
+  const [concluidosCount, setConcluidosCount] = useState(0);
+  const [emAndamentoCount, setEmAndamentoCount] = useState(0);
+  const [emAnaliseCount, setEmAnaliseCount] = useState(0);
+  const [recusadosCount, setRecusadosCount] = useState(0);
 
   useEffect(() => {
     document.title = 'Chamados Prefeitura';
   }, []);
+
+  useEffect(() => {
+    // Atualizar o contador de chamados concluídos
+    const concluidos = chamados.filter(chamado => chamado.status === 'Concluído');
+    setConcluidosCount(concluidos.length);
+
+    // Atualizar o contador de chamados em andamento
+    const emAndamento = chamados.filter(chamado => chamado.status === 'Em andamento');
+    setEmAndamentoCount(emAndamento.length);
+
+    // Atualizar o contador de chamados em análise
+    const emAnalise = chamados.filter(chamado => chamado.status === 'Em análise');
+    setEmAnaliseCount(emAnalise.length);
+
+    // Atualizar o contador de chamados recusados
+    const recusados = chamados.filter(chamado => chamado.status === 'Rejeitado');
+    setRecusadosCount(recusados.length);
+  }, [chamados]);
 
   const handleOpenModal = (index: any) => {
     setOpenModalIndex(index);
@@ -22,16 +52,29 @@ export default function Home() {
     setOpenModalIndex(null);
   }
 
-  const chamados = [
-    { nome: "Troca de Lâmpada na Rua A", secretaria: "Iluminação Pública", bairro: "Engenho", data: "04/02/2024", status: '' },
-    { nome: "Reparo em Buraco na Rua B", secretaria: "Obras", bairro: "Engenho", data: "04/02/2024", status: '' },
-    { nome: "Vazamento de Água na Rua C", secretaria: "Obras", bairro: "Engenho", data: "04/02/2024", status: '' },
-    { nome: "Podas de Árvores na Praça D", secretaria: "Meio Ambiente", bairro: "Engenho", data: "04/02/2024", status: '' },
-    { nome: "Sinalização Viária na Avenida E", secretaria: "Trânsito", bairro: "Engenho", data: "04/02/2024", status: '' },
-    { nome: "Conserto de Calçada na Rua F", secretaria: "Urbanismo", bairro: "Engenho", data: "04/02/2024", status: '' },
-  ];
+  const showConcluidos = () => {
+    const allConcluidos = chamados.filter((item) => item.status === 'Concluído');
+    console.log(allConcluidos);
+    console.log('Clicou em Concluídos');
+  };
 
-  const [statuses, setStatuses] = useState(Array(chamados.length).fill("")) // Array para rastrear o status de cada chamado
+  const showEmAndamento = () => {
+    const allEmAndamento = chamados.filter((item) => item.status === 'Em andamento');
+    console.log(allEmAndamento);
+    console.log('Clicou em Em andamento');
+  };
+
+  const showEmAnalise = () => {
+    const allEmAnalise = chamados.filter((item) => item.status === 'Em análise');
+    console.log(allEmAnalise);
+    console.log('Clicou em Em análise');
+  };
+
+  const showRecusados = () => {
+    const allRecusados = chamados.filter((item) => item.status === 'Rejeitado');
+    console.log(allRecusados);
+    console.log('Clicou em Recusados');
+  };
 
   const statusColors: Record<string, string> = {
     Recebido: 'text-gray-600',
@@ -42,7 +85,6 @@ export default function Home() {
     // Adicione outras cores conforme necessário
   };
 
-  // Funcao para definir o status do componente pai
   const handleSetStatus = (index: any, newStatus: any) => {
     const newStatuses = [...statuses];
     newStatuses[index] = newStatus;
@@ -56,8 +98,8 @@ export default function Home() {
       return chamado;
     });
 
-    // Agora, você pode usar o array `updatedChamados` conforme necessário
-    console.log(updatedChamados);
+    // Atualizar o estado dos chamados
+    setChamados(updatedChamados);
   };
 
   return (
@@ -80,9 +122,9 @@ export default function Home() {
           <div className="flex gap-6 items-end">
             <div className="flex items-center gap-3 px-6 py-3 rounded-md hover:bg-slate-100 hover:cursor-pointer hover:shadow-sm hover:transition-all duration-200">
               <p className="text-slate-600 font-[600] text-end leading-5">Todos os<br></br> chamados:</p>
-              <p className="text-slate-600 text-5xl">52</p>
+              <p className="text-slate-600 text-5xl">{chamados.length || 0}</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-green-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-green-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer" onClick={() => showConcluidos()}>
               <div className="flex items-center">
                 <Image
                   src="./icons/check.svg"
@@ -91,11 +133,11 @@ export default function Home() {
                   height={43}
                   priority
                 />
-                <p className="text-slate-600 text-2xl leading-6">78</p>
+                <p className="text-slate-600 text-2xl leading-6">{concluidosCount}</p>
               </div>
               <p className="text-slate-600 text-sm font-medium mt-[-4px]">Concluídos</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-sky-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-sky-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer" onClick={() => showEmAndamento()}>
               <div className="flex items-center">
                 <Image
                   src="./icons/progress.svg"
@@ -104,11 +146,11 @@ export default function Home() {
                   height={38}
                   priority
                 />
-                <p className="text-slate-600 text-2xl leading-6">38</p>
+                <p className="text-slate-600 text-2xl leading-6">{emAndamentoCount}</p>
               </div>
-              <p className="text-slate-600 text-sm font-medium mt-[-3px]">Em andamentos</p>
+              <p className="text-slate-600 text-sm font-medium mt-[-3px]">Em andamento</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-yellow-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-yellow-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer" onClick={() => showEmAnalise()}>
               <div className="flex items-center">
                 <Image
                   src="./icons/search.svg"
@@ -117,11 +159,11 @@ export default function Home() {
                   height={38}
                   priority
                 />
-                <p className="text-slate-600 text-2xl leading-6">88</p>
+                <p className="text-slate-600 text-2xl leading-6">{emAnaliseCount}</p>
               </div>
               <p className="text-slate-600 text-sm font-medium mt-[-3px]">Em Análise</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-red-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-red-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer" onClick={() => showRecusados()}>
               <div className="flex items-center">
                 <Image
                   src="./icons/reject.svg"
@@ -130,7 +172,7 @@ export default function Home() {
                   height={38}
                   priority
                 />
-                <p className="text-slate-600 text-2xl leading-6">13</p>
+                <p className="text-slate-600 text-2xl leading-6">{recusadosCount}</p>
               </div>
               <p className="text-slate-600 text-sm font-medium mt-[-3px]">Recusados</p>
             </div>
