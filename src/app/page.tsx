@@ -77,12 +77,12 @@ export default function Home() {
       <main className="container m-auto flex-1 my-4">
         <div className="flex justify-between items-center h-40">
           <h1 className="text-4xl text-gray-600 ">Chamados</h1>
-          <div className="flex gap-2 items-end">
-            <div className="flex items-center gap-3 px-6 py-3 rounded-md hover:bg-slate-100 hover:cursor-pointer hover:shadow-md hover:transition-all duration-200">
+          <div className="flex gap-6 items-end">
+            <div className="flex items-center gap-3 px-6 py-3 rounded-md hover:bg-slate-100 hover:cursor-pointer hover:shadow-sm hover:transition-all duration-200">
               <p className="text-slate-600 font-[600] text-end leading-5">Todos os<br></br> chamados:</p>
               <p className="text-slate-600 text-5xl">52</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-green-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-green-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
               <div className="flex items-center">
                 <Image
                   src="./icons/check.svg"
@@ -95,7 +95,7 @@ export default function Home() {
               </div>
               <p className="text-slate-600 text-sm font-medium mt-[-4px]">Concluídos</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-sky-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-sky-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
               <div className="flex items-center">
                 <Image
                   src="./icons/progress.svg"
@@ -108,7 +108,7 @@ export default function Home() {
               </div>
               <p className="text-slate-600 text-sm font-medium mt-[-3px]">Em andamentos</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-yellow-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-yellow-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
               <div className="flex items-center">
                 <Image
                   src="./icons/search.svg"
@@ -121,7 +121,7 @@ export default function Home() {
               </div>
               <p className="text-slate-600 text-sm font-medium mt-[-3px]">Em Análise</p>
             </div>
-            <div className="flex flex-col items-center hover:bg-red-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-red-50 px-4 py-2 rounded-md hover:shadow-sm hover:cursor-pointer">
               <div className="flex items-center">
                 <Image
                   src="./icons/reject.svg"
