@@ -77,12 +77,12 @@ export default function Home() {
       <main className="container m-auto flex-1 my-4">
         <div className="flex justify-between items-center h-40">
           <h1 className="text-4xl text-gray-600 ">Chamados</h1>
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-2 items-end">
             <div className="flex items-center gap-3 px-6 py-3 rounded-md hover:bg-slate-100 hover:cursor-pointer hover:shadow-md hover:transition-all duration-200">
               <p className="text-slate-600 font-[600] text-end leading-5">Todos os<br></br> chamados:</p>
               <p className="text-slate-600 text-5xl">52</p>
             </div>
-            <div className="text-center hover:bg-green-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-green-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
               <div className="flex items-center">
                 <Image
                   src="./icons/check.svg"
@@ -91,30 +91,48 @@ export default function Home() {
                   height={43}
                   priority
                 />
-                <p className="text-slate-600 text-2xl leading-6">38</p>
+                <p className="text-slate-600 text-2xl leading-6">78</p>
               </div>
-              <p className="text-slate-600 text-sm font-medium mt-[-7px]">Concluídos</p>
+              <p className="text-slate-600 text-sm font-medium mt-[-4px]">Concluídos</p>
             </div>
-            <div className="text-center hover:bg-sky-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+            <div className="flex flex-col items-center hover:bg-sky-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
               <div className="flex items-center">
                 <Image
                   src="./icons/progress.svg"
                   alt="Vercel Logo"
-                  width={43}
-                  height={43}
+                  width={38}
+                  height={38}
                   priority
                 />
                 <p className="text-slate-600 text-2xl leading-6">38</p>
               </div>
-              <p className="text-slate-600 text-sm font-medium mt-[-7px]">Em andamentos</p>
+              <p className="text-slate-600 text-sm font-medium mt-[-3px]">Em andamentos</p>
             </div>
-            <div className="hover:bg-yellow-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
-              <p className="text-slate-600 text-2xl leading-6">88</p>
-              <p className="text-yellow-600 font-medium">Em Análise</p>
+            <div className="flex flex-col items-center hover:bg-yellow-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+              <div className="flex items-center">
+                <Image
+                  src="./icons/search.svg"
+                  alt="Vercel Logo"
+                  width={38}
+                  height={38}
+                  priority
+                />
+                <p className="text-slate-600 text-2xl leading-6">88</p>
+              </div>
+              <p className="text-slate-600 text-sm font-medium mt-[-3px]">Em Análise</p>
             </div>
-            <div className="hover:bg-red-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
-              <p className="text-slate-600 text-2xl leading-6">88</p>
-              <p className="text-red-600 font-medium">Recusados</p>
+            <div className="flex flex-col items-center hover:bg-red-50 px-6 py-3 rounded-md hover:shadow-md hover:cursor-pointer">
+              <div className="flex items-center">
+                <Image
+                  src="./icons/reject.svg"
+                  alt="Vercel Logo"
+                  width={38}
+                  height={38}
+                  priority
+                />
+                <p className="text-slate-600 text-2xl leading-6">13</p>
+              </div>
+              <p className="text-slate-600 text-sm font-medium mt-[-3px]">Recusados</p>
             </div>
           </div>
         </div>
